@@ -135,7 +135,7 @@ col1, col2, col3, col4, col5, col6 = st.columns([1, 4, 6, 6, 4, 1])
 
 with col3:
     if st.button("📁 Portfolio", use_container_width=True):
-        st.switch_page("pages/portfolio.py")
+        st.switch_page("pages/Portfolio.py")
 
 with col4:
     if st.button("📑 CV", use_container_width=True):
@@ -143,8 +143,8 @@ with col4:
 
 with col3:
     if st.button("👨‍💼 About Me", use_container_width=True):
-        st.switch_page("pages/aboutme.py")
+        st.switch_page("pages/AboutME.py")
 
 with col4:
     if st.button("📞 Contact", use_container_width=True):
-        st.switch_page("pages/contact.py")
+        st.switch_page("pages/Contact.py")
