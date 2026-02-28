@@ -143,8 +143,8 @@ with col4:
 
 with col3:
     if st.button("👨‍💼 About Me", use_container_width=True):
-        st.switch_page("pages/AboutME.py")
+        st.switch_page("pages/aboutme.py")
 
 with col4:
     if st.button("📞 Contact", use_container_width=True):
-        st.switch_page("pages/Contact.py")
+        st.switch_page("pages/contact.py")

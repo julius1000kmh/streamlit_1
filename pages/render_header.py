@@ -17,7 +17,7 @@ col1, col2, col3, col4, col5= st.columns([1, 3,  12, 3, 1])
 
 with col1:
     if st.button("🏠", use_container_width=True):
-        st.switch_page("Streamlitapp.py")
+        st.switch_page("streamlitapp.py")
 
 
 with col3:
