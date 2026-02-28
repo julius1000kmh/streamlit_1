@@ -22,7 +22,7 @@ with col1:
 
 with col3:
     st.markdown(
-        "<h1 style='text-align: center; margin-top: 0;'>📞 Überschrift</h1>",
+        "<h1 style='text-align: center; margin-top: 0;'>📑 CV</h1>",
         unsafe_allow_html=True
     )
 
@@ -95,7 +95,7 @@ def display_pdf(file_path):
 
     st.markdown(pdf_display, unsafe_allow_html=True)
 with col3:
-    display_pdf("CV1.pdf")
+    display_pdf("CV2.pdf")
 
 
 

@@ -22,7 +22,7 @@ with col1:
 
 with col3:
     st.markdown(
-        "<h1 style='text-align: center; margin-top: 0;'>📞 Überschrift</h1>",
+        "<h1 style='text-align: center; margin-top: 0;'>📁 Portfolio</h1>",
         unsafe_allow_html=True
     )
 
