@@ -344,22 +344,7 @@ st.markdown("""
 st.markdown("<div class='gradient'>Shiny Effekt 💫</div>", unsafe_allow_html=True)
 
 
-st.markdown("""
-<style>
-.glass {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    padding:20px;
-    border-radius:20px;
-    transition:0.3s;
-}
-.glass:hover {
-    background: rgba(0,150,255,0.15);
-}
-</style>
-""", unsafe_allow_html=True)
 
-st.markdown("<div class='glass'>Glass Hover 🧊</div>", unsafe_allow_html=True)
 
 
 st.markdown("""

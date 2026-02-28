@@ -1,4 +1,54 @@
 import streamlit as st
+import base64
+
+st.set_page_config(
+    layout="wide",
+    page_title="Portfolio Website Julius Schultheiß!"
+)
+
+# Header ausblenden
+st.markdown("""
+    <style>
+    header {visibility: hidden;}
+    </style>
+""", unsafe_allow_html=True)
+
+
+### HEADER ROW
+col1, col2, col3, col4, col5= st.columns([1, 3,  12, 3, 1])
+def round_image_hover(image_path, size=220):
+    with open(image_path, "rb") as img:
+        img_base64 = base64.b64encode(img.read()).decode()
+
+    st.markdown(f"""
+    <style>
+    .profile-img {{
+        width: {size}px;
+        height: {size}px;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        border: 0px solid #F8D7DD;
+    }}
+
+    .profile-img:hover {{
+        transform: scale(1.07);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }}
+    </style>
+
+    <div style="text-align: center;">
+        <img src="data:image/png;base64,{img_base64}" class="profile-img">
+    </div>
+    """, unsafe_allow_html=True)
+with col3:
+    round_image_hover("foto.png", 220)
+with col3:
+    st.markdown(
+        "<h1 style='text-align: center; margin-top: 0;'>HI, MY NAME IS JULIUS! 👋</h1>",
+        unsafe_allow_html=True
+    )
+
 import pandas as pd
 import numpy as np 
 from datetime import date
@@ -8,50 +58,52 @@ from streamlit_plotly_events import plotly_events
 import webbrowser
 
 
-### SETUP
-### Farbpalette: https://www.pantone.com/eu/de/artikel/color-palettes/earth-healing-farbpalette
+with col3:
+# Header ausblenden
+    st.markdown("""
+        <style>
+        header {visibility: hidden;}
+        </style>
+    """, unsafe_allow_html=True)
 
-st.markdown("""
-    <style>
-    header {visibility: hidden;}
-    </style>
-""", unsafe_allow_html=True)
 
-st.set_page_config(layout="centered",
-                   page_title="Portfolio Website Julius Schultheiß!")
-
-### INTRODUCTION
 
 st.markdown(
-    "<h1 style='text-align: center;'> HI, MY NAME IS JULIUS! </h1>",
-    unsafe_allow_html=True
-)
-st.markdown(
-    "<h4 style='text-align: center;'> Allow me to introduce myself: </h4>",
-    unsafe_allow_html=True
-)
-st.markdown("I am a Mechatronics & Robotics student based in Vienna, currently taking a break from my studies to gain hands-on industry experience at Mercedes-Benz. During my internship, I work in Data Analysis for the electric G-Wagon, contributing to data-driven decision-making in the context of cutting-edge electric mobility. ")
-st.markdown("Following my internship, I am looking to continue working part-time alongside my studies in a technically relevant field in or near Vienna. I am particularly interested in roles at the intersection of engineering, data analysis, automation, and innovative mobility solutions, where I can apply and further develop both my technical expertise and practical experience.")
+        "<h4 style='text-align: center;'> Allow me to introduce myself: </h4>",
+        unsafe_allow_html=True
+    )
+col1, col2, col3, col4, col5, col6 = st.columns([1, 4, 6, 6, 4, 1])
 
-### LINKS & BUTTONS zu allen Wichtigen Infos! 
+with col3:
+    st.markdown("""
+        I am a Mechatronics & Robotics student based in Vienna, currently taking a break 
+        from my studies to gain hands-on industry experience at Mercedes-Benz. 
+        During my internship, I work in Data Analysis for the electric G-Wagon.
+    """)
+with col4:
+    st.markdown("""
+        Following my internship, I am looking to continue working part-time alongside 
+        my studies in a technically relevant field in or near Vienna.
+    """)
 
-col1, col2 = st.columns(2)
 
-with col1:
-    if st.button("📁    Portfolio", use_container_width=True):
+### BUTTON SECTION
+
+# ✅ Auch hier Liste verwenden!
+col1, col2, col3, col4, col5, col6 = st.columns([1, 4, 6, 6, 4, 1])
+
+with col3:
+    if st.button("📁 Portfolio", use_container_width=True):
         st.switch_page("pages/portfolio.py")
 
-
-with col2:
-    if st.button("📑    CV", use_container_width=True):
+with col4:
+    if st.button("📑 CV", use_container_width=True):
         st.switch_page("pages/CV.py")
 
-with col1:
-    if st.button("👨‍💼 About ME", use_container_width=True):
+with col3:
+    if st.button("👨‍💼 About Me", use_container_width=True):
         st.switch_page("pages/AboutME.py")
 
-
-with col2:
+with col4:
     if st.button("📞 Contact", use_container_width=True):
         st.switch_page("pages/Contact.py")
-
