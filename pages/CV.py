@@ -77,8 +77,8 @@ st.markdown("""
     header {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
-
-st.image("cv.jpg", use_container_width=True)
+with col3:
+    st.image("cv.jpg", use_container_width=True)
 
 
 

@@ -85,11 +85,11 @@ with col3:
 col1, col2, col3, col4, col5, col6 = st.columns([1, 3,  6, 6, 3, 1])
 
 with col3:
-    if st.button("Chess Engine", use_container_width=True):
+    if st.button("Coming soon1", use_container_width=True):
         st.switch_page("pages/portfolio.py")
 
 with col4:
-    if st.button("Spinning Cube", use_container_width=True):
+    if st.button("Coming soon2", use_container_width=True):
         st.switch_page("pages/portfolio.py")
 
 col1, col2, col3, col4, col5= st.columns([1, 3,  12, 3, 1])
@@ -98,11 +98,11 @@ with col3:
 col1, col2, col3, col4, col5, col6 = st.columns([1, 3,  6, 6, 3, 1])
 
 with col3:
-    if st.button("Data Analysis", use_container_width=True):
+    if st.button("Coming soon3", use_container_width=True):
         st.switch_page("pages/portfolio.py")
 
 with col4:
-    if st.button("LSTM Trading Bot", use_container_width=True):
+    if st.button("Coming soon4", use_container_width=True):
         st.switch_page("pages/portfolio.py")
 col1, col2, col3, col4, col5= st.columns([1, 3,  12, 3, 1])
 
