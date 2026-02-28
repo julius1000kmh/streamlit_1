@@ -1,12 +1,54 @@
 import streamlit as st
 import base64
+from assets.news_loader import load_news
+if "notification_seen" not in st.session_state:
+    st.session_state.notification_seen = False
 
+
+news_items = load_news()
 st.set_page_config(
     layout="wide",
     page_title="Portfolio Website Julius Schultheiß!"
 )
+from datetime import datetime, timedelta
+col1, col2, col3, col4, col5= st.columns([1, 3,  12, 3, 1])
+# -----------------------------------
+# HEADER ROW MIT BELL RECHTS
+# -----------------------------------
 
-# Header ausblenden
+today = datetime.today()
+threshold = today - timedelta(days=10)
+recent_news = [n for n in news_items if n["date"] > threshold]
+unread_count = len(recent_news)
+
+with col5:
+
+    today = datetime.today()
+    threshold = today - timedelta(days=10)
+    recent_news = [n for n in news_items if n["date"] > threshold]
+    unread_count = len(recent_news)
+
+    # Wenn noch nicht gesehen → Badge anzeigen
+    if not st.session_state.notification_seen and unread_count > 0:
+        bell_label = f"🔔 ({unread_count})"
+    else:
+        bell_label = "🔔"
+
+    with st.popover(bell_label, use_container_width=True):
+
+        # 👉 Sobald Popover geöffnet wird → als gelesen markieren
+        st.session_state.notification_seen = True
+
+        st.markdown("### 📰 Latest News")
+
+        sorted_news = sorted(news_items, key=lambda x: x["date"], reverse=True)
+
+        for news in sorted_news[:5]:
+            st.write(f"• {news['title']}")
+
+        st.markdown("---")
+        st.page_link("pages/news.py", label="View all News")
+
 st.markdown("""
     <style>
     header {visibility: hidden;}
@@ -15,7 +57,6 @@ st.markdown("""
 
 
 ### HEADER ROW
-col1, col2, col3, col4, col5= st.columns([1, 3,  12, 3, 1])
 def round_image_hover(image_path, size=220):
     with open(image_path, "rb") as img:
         img_base64 = base64.b64encode(img.read()).decode()

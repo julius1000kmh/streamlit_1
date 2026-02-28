@@ -46,25 +46,15 @@ recent_news = [n for n in news_items if n["date"] > threshold]
 unread_count = len(recent_news)
 
 with col5:
-
-    today = datetime.today()
-    threshold = today - timedelta(days=10)
-    recent_news = [n for n in news_items if n["date"] > threshold]
-    unread_count = len(recent_news)
-
-    # Wenn noch nicht gesehen → Badge anzeigen
-    if not st.session_state.notification_seen and unread_count > 0:
+    # Label mit Badge im Text
+    bell_label = "🔔"
+    if unread_count > 0:
         bell_label = f"🔔 ({unread_count})"
-    else:
-        bell_label = "🔔"
 
     with st.popover(bell_label, use_container_width=True):
-
-        # 👉 Sobald Popover geöffnet wird → als gelesen markieren
-        st.session_state.notification_seen = True
-
         st.markdown("### 📰 Latest News")
 
+        # Neueste zuerst anzeigen
         sorted_news = sorted(news_items, key=lambda x: x["date"], reverse=True)
 
         for news in sorted_news[:5]:
@@ -72,34 +62,9 @@ with col5:
 
         st.markdown("---")
         st.page_link("pages/news.py", label="View all News")
+# Header ausblenden
 st.markdown("""
     <style>
     header {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
-
-import base64
-
-def display_pdf(file_path):
-    with open(file_path, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode("utf-8")
-
-    pdf_display = f"""
-        <iframe 
-            src="data:application/pdf;base64,{base64_pdf}" 
-            width="100%" 
-            height="800px" 
-            type="application/pdf">
-        </iframe>
-    """
-
-    st.markdown(pdf_display, unsafe_allow_html=True)
-with col3:
-    display_pdf("CV1.pdf")
-
-
-
-
-
-
-
