@@ -80,7 +80,7 @@ st.markdown("""
 
 with col3:
     st.markdown("## Software")
-    st.warning("⚠️ Please note: No Code has been AI generated, unsell specifically mentioned.")
+    st.warning("⚠️ Please note: No code has been AI generated, unsell specifically mentioned.")
 with col3:
     st.markdown("### C & C++")
 col1, col2, col3, col4, col5, col6 = st.columns([1, 3,  6, 6, 3, 1])
