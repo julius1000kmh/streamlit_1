@@ -95,7 +95,6 @@ import numpy as np
 from datetime import date
 import plotly.express as px
 import plotly.graph_objects as go
-from streamlit_plotly_events import plotly_events
 import webbrowser
 
 

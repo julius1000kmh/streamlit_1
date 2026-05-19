@@ -3,7 +3,7 @@ st.set_page_config(
     layout="wide",
     page_title="Portfolio Website Julius Schultheiß!"
 )
-
+from streamlit_plotly_events import plotly_events
 # Header ausblenden
 st.markdown("""
     <style>
@@ -55,9 +55,9 @@ with col5:
     # Wenn noch nicht gesehen → Badge anzeigen
     if not st.session_state.notification_seen and unread_count > 0:
         bell_label = f"🔔 ({unread_count})"
+        st.session_state.notification_seen = False
     else:
         bell_label = "🔔"
-
     with st.popover(bell_label, use_container_width=True):
 
         # 👉 Sobald Popover geöffnet wird → als gelesen markieren
@@ -72,6 +72,8 @@ with col5:
 
         st.markdown("---")
         st.page_link("pages/news.py", label="View all News")
+    if "notification_seen" not in st.session_state:
+        st.session_state.notification_seen = False
 st.markdown("""
     <style>
     header {visibility: hidden;}
